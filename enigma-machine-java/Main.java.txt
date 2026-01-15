@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Rotor wirings (historical-style examples)
+        Rotor r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ");
+        Rotor r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE");
+        Rotor r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO");
+
+        Reflector reflector = new Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT");
+
+        EnigmaMachine enigma = new EnigmaMachine(r1, r2, r3, reflector);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter message: ");
+        String input = scanner.nextLine();
+
+        String encrypted = enigma.encryptMessage(input);
+        System.out.println("Encrypted message: " + encrypted);
+
+        scanner.close();
+    }
+}

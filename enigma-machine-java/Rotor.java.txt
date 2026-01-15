@@ -1,0 +1,28 @@
+public class Rotor {
+
+    private String wiring;
+    private int position;
+
+    public Rotor(String wiring) {
+        this.wiring = wiring;
+        this.position = 0;
+    }
+
+    // Rotate rotor by 1 position
+    public void rotate() {
+        position = (position + 1) % 26;
+    }
+
+    // Encrypt letter going forward
+    public char forward(char c) {
+        int index = (c - 'A' + position) % 26;
+        return wiring.charAt(index);
+    }
+
+    // Encrypt letter going backward
+    public char backward(char c) {
+        int index = wiring.indexOf(c);
+        index = (index - position + 26) % 26;
+        return (char) ('A' + index);
+    }
+}
